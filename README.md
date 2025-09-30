@@ -43,110 +43,21 @@ CREATE TABLE Sale (
 
 ## 📈 Analysis Queries
 
-### 1. Total Orders per Month and Year
-```sql
-SELECT
-    EXTRACT(YEAR FROM order_date) AS year,
-    COUNT(CASE WHEN month_id = 1  THEN order_number END) AS "1",
-    COUNT(CASE WHEN month_id = 2  THEN order_number END) AS "2",
-    COUNT(CASE WHEN month_id = 3  THEN order_number END) AS "3",
-    COUNT(CASE WHEN month_id = 4  THEN order_number END) AS "4",
-    COUNT(CASE WHEN month_id = 5  THEN order_number END) AS "5",
-    COUNT(CASE WHEN month_id = 6  THEN order_number END) AS "6",
-    COUNT(CASE WHEN month_id = 7  THEN order_number END) AS "7",
-    COUNT(CASE WHEN month_id = 8  THEN order_number END) AS "8",
-    COUNT(CASE WHEN month_id = 9  THEN order_number END) AS "9",
-    COUNT(CASE WHEN month_id = 10 THEN order_number END) AS "10",
-    COUNT(CASE WHEN month_id = 11 THEN order_number END) AS "11",
-    COUNT(CASE WHEN month_id = 12 THEN order_number END) AS "12"
-FROM sale
-GROUP BY year
-ORDER BY year;
-```
+### 1. Top 10 Customers with the Highest Sales
 
----
+### 2. Total Number of Orders from Japan Territory
 
-### 2. Top 10 Customers with the Highest Sales
-```sql
-SELECT customer_name, sales
-FROM sale
-ORDER BY sales DESC
-LIMIT 10;
-```
+### 3. Average Sales per Order (by State)
 
----
+### 4. Revenue by Product Line
 
-### 3. Total Number of Orders from Japan Territory
-```sql
-SELECT 
-    COUNT(order_number) AS total_orders,
-    territory
-FROM sale
-WHERE territory='japan';
-```
+### 5. Top 5 Countries by Revenue
 
----
+### 6. Orders by Deal Size
 
-### 4. Average Sales per Order (by State)
-```sql
-SELECT state,
-       ROUND(AVG(sales),2) AS avg_sales
-FROM sale
-GROUP BY state
-ORDER BY avg_sales;
-```
+### 7. Top 10 Product Performance
 
----
-
-### 5. Revenue by Product Line
-```sql
-SELECT 
-    product_line,
-    SUM(sales) AS total_revenue
-FROM sale
-GROUP BY product_line
-ORDER BY total_revenue DESC;
-```
-
----
-
-### 6. Top 5 Countries by Revenue
-```sql
-SELECT 
-    country,
-    SUM(sales) AS total_sales
-FROM sale
-GROUP BY country
-ORDER BY total_sales DESC
-LIMIT 5;
-```
-
----
-
-### 7. Orders by Deal Size
-```sql
-SELECT 
-    deal_size,
-    SUM(sales) AS total_sales
-FROM sale 
-GROUP BY deal_size;
-```
-
----
-
-### 8. Top 10 Product Performance
-```sql
-SELECT 
-    product_code,
-    SUM(quantity_ordered) AS total_quantity,
-    SUM(sales) AS total_revenue
-FROM sale
-GROUP BY product_code
-ORDER BY total_revenue DESC
-LIMIT 10;
-```
-
----
+### 8. Total Orders per Month and Year
 
 ## 🚀 Key Insights
 - Track **monthly & yearly orders** for trend analysis.  
@@ -157,7 +68,7 @@ LIMIT 10;
 ---
 
 ## 🛠️ Requirements
-- MySQL / MariaDB  
+- MySQL   
 - Basic SQL knowledge  
 
 ---
