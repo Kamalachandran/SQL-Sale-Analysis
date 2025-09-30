@@ -28,27 +28,6 @@ use sale;
     deal_size VARCHAR(20)
 );
 
--- total order per month and year
-SELECT
-    EXTRACT(YEAR FROM order_date) AS year,
-    COUNT(CASE WHEN month_id = 1  THEN order_number END) AS "1",
-    COUNT(CASE WHEN month_id = 2  THEN order_number END) AS "2",
-    COUNT(CASE WHEN month_id = 3  THEN order_number END) AS "3",
-    COUNT(CASE WHEN month_id = 4  THEN order_number END) AS "4",
-    COUNT(CASE WHEN month_id = 5  THEN order_number END) AS "5",
-    COUNT(CASE WHEN month_id = 6  THEN order_number END) AS "6",
-    COUNT(CASE WHEN month_id = 7  THEN order_number END) AS "7",
-    COUNT(CASE WHEN month_id = 8  THEN order_number END) AS "8",
-    COUNT(CASE WHEN month_id = 9  THEN order_number END) AS "9",
-    COUNT(CASE WHEN month_id = 10 THEN order_number END) AS "10",
-    COUNT(CASE WHEN month_id = 11 THEN order_number END) AS "11",
-    COUNT(CASE WHEN month_id = 12 THEN order_number END) AS "12"
-FROM sale
-GROUP BY year
-ORDER BY year;
-
-
-
 -- 1.top 10 customers with the highest sales
 SELECT customer_name,sales
 FROM sale
@@ -102,3 +81,22 @@ SELECT
 FROM sale
 GROUP BY product_code
 ORDER BY total_revenue DESC;
+
+-- 8. total order per month and year
+SELECT
+    EXTRACT(YEAR FROM order_date) AS year,
+    COUNT(CASE WHEN month_id = 1  THEN order_number END) AS "1",
+    COUNT(CASE WHEN month_id = 2  THEN order_number END) AS "2",
+    COUNT(CASE WHEN month_id = 3  THEN order_number END) AS "3",
+    COUNT(CASE WHEN month_id = 4  THEN order_number END) AS "4",
+    COUNT(CASE WHEN month_id = 5  THEN order_number END) AS "5",
+    COUNT(CASE WHEN month_id = 6  THEN order_number END) AS "6",
+    COUNT(CASE WHEN month_id = 7  THEN order_number END) AS "7",
+    COUNT(CASE WHEN month_id = 8  THEN order_number END) AS "8",
+    COUNT(CASE WHEN month_id = 9  THEN order_number END) AS "9",
+    COUNT(CASE WHEN month_id = 10 THEN order_number END) AS "10",
+    COUNT(CASE WHEN month_id = 11 THEN order_number END) AS "11",
+    COUNT(CASE WHEN month_id = 12 THEN order_number END) AS "12"
+FROM sale
+GROUP BY year
+ORDER BY year;
