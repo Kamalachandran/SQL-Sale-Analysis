@@ -66,12 +66,3 @@ CREATE TABLE Sale (
 - Discover **best-performing products** based on revenue and quantity sold.  
 
 ---
-
-## 🛠️ Requirements
-- MySQL   
-- Basic SQL knowledge  
-
----
-
-## 📌 Author
-**SQL Sales Analysis Queries** - for practice and business insights.
